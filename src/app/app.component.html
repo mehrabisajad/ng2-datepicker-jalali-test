@@ -1,3 +1,12 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <h1>ng2-datepicker-jalali</h1>
+  <h4><a href="http://mehrabisajad.ir">mehrabisajad.ir</a></h4>
+  <div class="row" style="margin-top: 40pt">
+
+      <ngb-datepicker [(ngModel)]="model"
+                      [firstDayOfWeek]="6">
+      </ngb-datepicker>
+
+      <pre style="margin: 20pt">Model: {{ model | json }}</pre>
+  </div>
+</div>

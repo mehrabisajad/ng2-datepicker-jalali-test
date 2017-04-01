@@ -1,10 +1,34 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {NgbDateStruct, NgbCalendar, NgbDatepickerI18n, NgbDatepickerConfig} from '@ng-bootstrap/ng-bootstrap';
+import {PersianI18n} from "ng2-datepicker-jalali/persian/persian-I18n";
+import {NgbCalendarPersian} from "ng2-datepicker-jalali/persian/ngb-calendar-persian";
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [
+    {provide: NgbCalendar, useClass: NgbCalendarPersian},
+    {provide: NgbDatepickerI18n, useClass: PersianI18n}
+  ]
 })
 export class AppComponent {
-  title = 'app works!';
+  private today: NgbDateStruct;
+
+  model: NgbDateStruct;
+  date: {year: number, month: number};
+
+  constructor(calendar: NgbCalendar, config: NgbDatepickerConfig) {
+    this.today = calendar.getToday();
+  }
+
+  selectToday() {
+    this.model = {
+      year: this.today.year,
+      month: this.today.month,
+      day: this.today.day
+    };
+  }
+
 }
