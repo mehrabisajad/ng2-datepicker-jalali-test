@@ -31,4 +31,8 @@ export class AppComponent {
     };
   }
 
+  displayMonths = 2;
+  navigation = 'select';
+
+
 }

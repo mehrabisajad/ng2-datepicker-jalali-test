@@ -3,10 +3,86 @@
   <h4><a href="http://mehrabisajad.ir">mehrabisajad.ir</a></h4>
   <div class="row" style="margin-top: 40pt">
 
-      <ngb-datepicker [(ngModel)]="model"
-                      [firstDayOfWeek]="6">
-      </ngb-datepicker>
+    <div class="col-md-6">
+      <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" [firstDayOfWeek]="6"></ngb-datepicker>
+      <hr/>
+      <button class="btn btn-sm btn-outline-primary" (click)="selectToday()">Select Today</button>
+      <button class="btn btn-sm btn-outline-primary" (click)="dp.navigateTo()">To current month</button>
+      <button class="btn btn-sm btn-outline-primary" (click)="dp.navigateTo({year: 1397, month: 4})">برو به تیر 1397
+      </button>
 
-      <pre style="margin: 20pt">Model: {{ model | json }}</pre>
+      <hr/>
+
+      <pre>Month: {{ date.month }}.{{ date.year }}</pre>
+      <pre>Model: {{ model | json }}</pre>
+    </div>
+
+    <div class="col-md-6">
+
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp" [(ngModel)]="model" [firstDayOfWeek]="6" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-addon" (click)="d.toggle()">
+              <img src="../assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <hr/>
+      <pre>Model: {{ model | json }}</pre>
+    </div>
+
+
   </div>
+  <hr/>
+
+  <div class="row">
+
+    <ngb-datepicker [displayMonths]="displayMonths" [navigation]="navigation"></ngb-datepicker>
+
+    <hr/>
+
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                 name="dp2" [displayMonths]="displayMonths" [navigation]="navigation" ngbDatepicker #d2="ngbDatepicker">
+          <div class="input-group-addon" (click)="d2.toggle()">
+            <img src="../assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <hr/>
+
+    <select class="custom-select" [(ngModel)]="displayMonths">
+      <option [ngValue]="1">یک ماه</option>
+      <option [ngValue]="2">دو ماه</option>
+      <option [ngValue]="3">سه ماه</option>
+    </select>
+
+    <select class="custom-select" [(ngModel)]="navigation">
+      <option value="none">بدون نویگشن</option>
+      <option value="select">با کمبوباکس انتخاب سال و ماه</option>
+      <option value="arrows">بدون کمبوباکس انتخاب سال و ماه</option>
+    </select>
+
+
+  </div>
+  <hr/>
+  <div class="row"  style="text-align: center">
+    <a href="https://ng-bootstrap.github.io/#/components/datepicker">
+      <h4>برای مثال های بیشتر به سایت بوت استرپ مراجعه کنید.</h4>
+    </a>
+  </div>
+  <div class="row" style="margin-bottom: 100px">
+    <a href="https://github.com/mehrabisajad/ng2-datepicker-jalali-test/">
+      <h4> برای دیدن کد ها به گیت هاب مراجعه کنید.</h4>
+    </a>
+  </div>
+
 </div>
