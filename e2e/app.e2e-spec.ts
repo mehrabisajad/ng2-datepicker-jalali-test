@@ -1,10 +1,10 @@
-import { Ng2DatepickerJalaliTestPage } from './app.po';
+import { RajaaPage } from './app.po';
 
-describe('ng2-datepicker-jalali-test App', function() {
-  let page: Ng2DatepickerJalaliTestPage;
+describe('rajaa App', () => {
+  let page: RajaaPage;
 
   beforeEach(() => {
-    page = new Ng2DatepickerJalaliTestPage();
+    page = new RajaaPage();
   });
 
   it('should display message saying app works', () => {
